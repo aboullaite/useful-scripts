@@ -9,3 +9,5 @@ I share in this repo some shell script that I weorked on, maybe someone can find
 3. quality-gates-jenkins.groovy: A simple groovy script to Break the CI Build in Jenkins! Details: https://aboullaite.me/sonar-build-breaker-groovy-jenkins/
 
 4. Generate Custom QRCode with image logo: https://aboullaite.me/generate-qrcode-with-logo-image-using-zxing/
+
+5. Importing kibana vizualisation and dashboards from an old instance: https://aboullaite.me/import-kibana-dashboards-and-visualization-using-groovy/
