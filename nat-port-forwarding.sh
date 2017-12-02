@@ -6,7 +6,7 @@ echo `date` hook/qemu "${1}" "${2}" >>/root/hook.log
 
 # Update the following variables to fit your setup
 
-### Ubuntu Base VM
+### First VM
 Guest_name=VM_1_NAME
 Guest_ipaddr=VM_1_IP
 Host_port=(  '1234' )
@@ -30,7 +30,7 @@ if [ "${1}" = "${Guest_name}" ]; then
    fi
 fi
 
-### DEVMA VM
+### Second VM
 Guest_name=VM_2_NAME
 Guest_ipaddr=VM_2_IP
 Host_port=(  '7465' )
