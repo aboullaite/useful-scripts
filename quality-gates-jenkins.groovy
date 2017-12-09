@@ -4,18 +4,18 @@
 import static groovyx.net.http.ContentType.TEXT
 // Define URL variable
 String taskURL = "http://<SONAR_URL>/api/ce/task?id=TASK_ID"
-String projectStatusURL = "http://<SONAR_URL>//api/qualitygates/project_status?analysisId="
+String projectStatusURL = "http://<SONAR_URL>/api/qualitygates/project_status?analysisId="
 
 // Get project status
 def status=taskURL(taskURL).task.status
 while ( status == "PENDING" || status == "IN_PROGRESS" ) {
 println "waiting for sonar results"
-status=taskURL(taskURL).task.status
+status = httpClient(taskURL).task.status
 sleep(1000)
 }
       assert status != "CANCELED" : "Build fail because sonar project is CANCELED"
       assert status != "FAILED" : "Build fail because sonar project is FAILED"
-      def qualitygates= httpClient('http://<SONAR_URL>//api/qualitygates/project_status?analysisId='+taskSlurper.task.analysisId)
+      def qualitygates= httpClient(projectStatusURL + httpClient(taskURL).task.analysisId)
       assert qualitygates.projectStatus.status != "ERROR" : "Build fail because sonar project status is not ok"
       println "Huraaaah! You made it :) Sonar Results are good"
 
