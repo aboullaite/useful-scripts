@@ -3,9 +3,8 @@
 )
 import static groovyx.net.http.ContentType.TEXT
 // Define URL variable
-def taskId = "/var/lib/jenkins/groovy-script/taskId.sh".execute().text.replaceAll("\\n","")
-String taskURL = "http://192.168.1.111:9002/api/ce/task?id="+taskId
-String projectStatusURL = "hhttp://192.168.1.111:9002/api/qualitygates/project_status?analysisId="
+String taskURL = "http://<SONAR_URL>/api/ce/task?id=TASK_ID"
+String projectStatusURL = "http://<SONAR_URL>//api/qualitygates/project_status?analysisId="
 
 // Get project status
 def status=taskURL(taskURL).task.status
