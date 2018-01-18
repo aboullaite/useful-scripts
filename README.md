@@ -13,3 +13,5 @@ I share in this repo some shell script that I weorked on, maybe someone can find
 5. Importing kibana vizualisation and dashboards from an old instance: https://aboullaite.me/import-kibana-dashboards-and-visualization-using-groovy/
 
 6. Dynamic port-forwarding for NAT-ed kvm/libvirt networks: https://aboullaite.me/dynamic-port-forwarding-for-nat-ed-kvm-libvirt-networks/
+
+7. Cleanly restart libvirt network: https://aboullaite.me/effectively-restarting-kvm-libvirt-network
