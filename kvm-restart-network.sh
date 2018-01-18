@@ -3,11 +3,11 @@
 set -e
 set -u
 
-NETWORK_NAME=default
-NETWORK_HOOK=/etc/libvirt/hooks/qemu
+NET_NAME=default
+NET_HOOK=/etc/libvirt/hooks/qemu
 
-virsh net-destroy $NETWORK_NAME
-virsh net-start $NETWORK_NAME
+virsh net-destroy $NET_NAME
+virsh net-start $NET_NAME
 
 VMS=$( virsh list | tail -n +3 | head -n -1 | awk '{ print $2; }' )
 
@@ -19,10 +19,10 @@ for m in $VMS ; do
 
     set +e
     virsh detach-interface "$m" network --mac "$MAC_ADDR" && sleep 3
-    virsh attach-interface "$m" network $NETWORK_NAME --mac "$MAC_ADDR" --model "$NET_MODEL"
+    virsh attach-interface "$m" network $NET_NAME --mac "$MAC_ADDR" --model "$NET_MODEL"
     set -e
 
-    $NETWORK_HOOK "$m" stopped && sleep 3
-    $NETWORK_HOOK "$m" start
+    $NET_HOOK "$m" stopped && sleep 3
+    $NET_HOOK "$m" start
 
 done
